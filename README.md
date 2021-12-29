@@ -1,3 +1,3 @@
-# Hotel-Review-Sentiment-Analysis-
+# Hotel-Review-Sentiment-Analysis-By Mian Mudarrib
 Whenever we are looking for hotels for vacation or travel, we always prefer a hotel known for its services. The best way to find out whether a hotel is right for you or not is to find out what people are saying about the hotel who have stayed there before. Now it is very difficult to read the experience of each person who has given their opinion on the services of the hotel. This is where the task of sentiment analysis comes in. In this article, I will walk you through the task of Hotel Reviews Sentiment Analysis with R.
 ![alt text](https://i.ibb.co/YPWnVkJ/hotel-sentiment-analysis.png)
