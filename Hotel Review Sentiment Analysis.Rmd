@@ -1,0 +1,48 @@
+---
+title: "Hotel Review Sentiment Analysis"
+output: pdf_document
+---
+Hotel Review Sentiment Analysis by Mian Muhammad Mudarrib
+F179412
+
+```{r}
+install.packages("plotrix",repos = "http://cran.us.r-project.org")
+if (!require("pacman")) install.packages("pacman",repos = "http://cran.us.r-project.org")
+```
+
+```{r}
+library("plotrix")
+library ('data.table')
+hotel_reviews <- read.csv("hotel_reviews.csv")
+hotel_reviews<-hotel_reviews[1:100,]
+pacman::p_load(sentimentr, dplyr, magrittr)
+temp <- hotel_reviews
+i<-1
+for(review in temp$Review)
+{
+   temp$Sentiment[i] <- sentiment(review)$sentiment
+   if(temp$Sentiment[i] > 0)
+   {
+       temp$category[i] = "Positive"
+   }
+   else if(temp$Sentiment[i] < 0)
+   {
+       temp$category[i] = "Negative"
+   }
+   else if(temp$Sentiment[i] == 0)
+   {
+       temp$category[i] = "Neutral"
+   }
+   i<-i+1
+}
+custom_colors <- c("red","Darkgreen","Yellow")
+category_frequency <- table(temp$category)
+prob <- prop.table(category_frequency)
+data<-as.data.frame(prob)
+data$percent = round(100*data$Freq/sum(data$Freq), digits = 1)
+data$label = paste(data$Var1," (", data$percent,"%)", sep = "")
+pie(data$Freq, labels = data$label, col = custom_colors)
+```
+
+
+
